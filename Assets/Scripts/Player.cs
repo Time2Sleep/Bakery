@@ -19,25 +19,25 @@ public class Player : MonoBehaviour
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        controller.SimpleMove(new Vector3(ver*speed,0,-hor*speed));
+        controller.SimpleMove(new Vector3(hor*speed,0,ver*speed));
         
         if ((Mathf.Abs(hor) + Mathf.Abs(ver)) >= 0.2f)
         {
-            transform.rotation = Quaternion.LookRotation(
-                new Vector3(Camera.main.transform.forward.x * hor, 0, Camera.main.transform.forward.y * -ver));
+            transform.rotation = Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x * ver, 0, Camera.main.transform.forward.y * -hor));
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             Grab();
         }
+
     }
 
     void Grab()
     {
         Debug.Log("Trying to hit object to grab");
         RaycastHit objectHit;
-        if (Physics.Raycast(transform.position+transform.up, transform.right-2*transform.up, out objectHit, 2)) {
+        if (Physics.Raycast(transform.position, transform.forward-transform.up, out objectHit, 5)) {
             if (objectHit.collider.gameObject.GetComponent<Item>() != null)
             {
                 objectHit.transform.position = transform.position + transform.right+transform.up;
