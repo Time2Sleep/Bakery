@@ -16,11 +16,14 @@ public class PickAndDrop: MonoBehaviour
 
         public void dropObject(Vector3 newPos)
         {
-                pickedObject.transform.SetParent(null);
-                pickedObject.transform.position = newPos + Vector3.up/4f;
-                pickedObject.GetComponent<Collider>().enabled = true;
-                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
-                pickedObject = null;
+                if (isObjectPickedUp())
+                {
+                        pickedObject.transform.SetParent(null);
+                        pickedObject.transform.position = newPos + Vector3.up / 4f;
+                        pickedObject.GetComponent<Collider>().enabled = true;
+                        pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+                        pickedObject = null;
+                }
         }
 
         public bool isObjectPickedUp()
