@@ -1,69 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class MouseController : MonoBehaviour
+public class MouseController: MonoBehaviour
 {
-    private Player player;
-    private Camera mainCamera;
-    [SerializeField] private String tag;
-    [SerializeField] private float interactionDistance;
+        [SerializeField] private GameObject cursor;
+        [SerializeField] private float interactionDistance = 3f;
+        private Camera camera;
+        private PickAndDrop pickAndDrop;
 
-    private bool canInteract = false;
-
-    //debug
-    public GameObject cursor;
-    private Vector3 hitPoint;
-
-    private void Start()
-    {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        mainCamera = Camera.main;
-        tag = "Interactable";
-    }
-
-    public Vector3 getHitPoint()
-    {
-        return hitPoint;
-    }
-
-    private void Update()
-    {
-        Ray interactionCursorPosition = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(interactionCursorPosition, out hit))
+        private void Start()
         {
-            Debug.DrawLine(interactionCursorPosition.origin, hit.point);
-            float actualDistance = Vector3.Distance(player.transform.position, hit.point);
-            player.transform.LookAt(new Vector3(hit.point.x, player.transform.position.y, hit.point.z));
-            if (actualDistance < interactionDistance)
-            {
-                hitPoint = hit.point;
-                canInteract = true;
-                cursor.SetActive(true);
-                cursor.transform.position = hitPoint;
-            }
-            else
-            {
-                canInteract = false;
+                camera = Camera.main;
                 cursor.SetActive(false);
-            }
+                pickAndDrop = GetComponent<PickAndDrop>();
+                
         }
 
-        if (Input.GetMouseButtonDown(0) && canInteract)
+        private void Update()
         {
-            Debug.Log("Clicked");
-            if (hit.collider.tag.Equals(tag))
-            {
-                Debug.Log("Tags match");
-                player.Grab(hit.collider.gameObject);
-            }
+                Ray rayFromCamera = camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit rayHit;
+                if (Physics.Raycast(rayFromCamera, out rayHit))
+                {
+                        float distance = Vector3.Distance(transform.position, rayHit.point);
+                        transform.LookAt(new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z));
+                        if (interactionDistance > distance)
+                        {
+                                cursor.transform.position = rayHit.point + new Vector3(0f, 0.1f, 0f);
+                                if (rayHit.collider.tag.Equals("Interactable"))
+                                {
+                                        if (Input.GetMouseButtonDown(0))
+                                        {
+                                                cursor.SetActive(true);
+                                                if (pickAndDrop.isObjectPickedUp())
+                                                {
+                                                        pickAndDrop.dropObject(rayHit.point);
+                                                }
+                                                pickAndDrop.pickUpObject(rayHit.collider.gameObject);
+                                        }
+                                }
+                        }
+                }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                        pickAndDrop.dropObject(cursor.transform.position);
+                        cursor.SetActive(false);
+                }
+                
+                
         }
-        else
-        {
-            Debug.Log(canInteract);
-        }
-    }
 }
