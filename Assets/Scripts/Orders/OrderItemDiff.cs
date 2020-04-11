@@ -5,7 +5,7 @@ namespace DefaultNamespace
     public class OrderItemDiff
     {
         public string itemName { get; }
-        public int cout { get; }
+        public int count { get; }
         public bool isTerminal { get; }
         public bool isValid { get; }
 
@@ -19,7 +19,7 @@ namespace DefaultNamespace
             else
             {
                 itemName = item.itemName;
-                cout = orderItem.desiredCount;
+                count = orderItem.desiredCount;
                 int countLeft = item.count - orderItem.desiredCount;
                 Debug.Log("countLeft" + countLeft);
                 isValid = !(countLeft < 0);

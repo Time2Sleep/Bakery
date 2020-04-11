@@ -86,13 +86,13 @@ public class Terminal : MonoBehaviour
                 {
                     if (diff.isTerminal)
                     {
-                        actualItems[diff.itemName].destory(diff.cout);
+                        actualItems[diff.itemName].destory(diff.count);
                         actualItems.Remove(diff.itemName);
                     }
                     else
                     {
                         var item = actualItems[diff.itemName];
-                        item.count -= diff.cout;
+                        item.count -= diff.count;
                     }
                 });
                 Debug.Log("customer found");
@@ -122,7 +122,7 @@ public class Terminal : MonoBehaviour
             var itemDiff = findItemByOrderItem(orderItem);
             if (!itemDiff.isValid)
             {
-                Debug.Log("Item diff failed" + orderItem.itemName + " " + itemDiff.cout);
+                Debug.Log("Item diff failed" + orderItem.itemName + " " + itemDiff.count);
                 return null;
             }
 

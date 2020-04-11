@@ -21,7 +21,7 @@ namespace DefaultNamespace
             foreach (OrderItem item in items)
             {
                 Debug.Log(item.itemName);
-                text += item.itemName[0].ToString().ToUpper();
+                text += item.itemName.ToString().ToUpper() + " ";
             }
 
             return text;

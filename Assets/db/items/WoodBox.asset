@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d3ff7925e94e2f87c4a2abec40f090, type: 3}
   m_Name: WoodBox
   m_EditorClassIdentifier: 
-  itemName: Woodbox
+  itemName: WoodenBox
   itemPrefab: {fileID: -927199367670048503, guid: cfedc8a2643d0614f88809e990fdb43f,
     type: 3}

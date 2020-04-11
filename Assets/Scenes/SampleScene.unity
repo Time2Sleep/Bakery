@@ -282,6 +282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: untitled
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 951a7d061f411a74d9c09d1fcb249b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: 951a7d061f411a74d9c09d1fcb249b5b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -500,7 +505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: f32326902f5eaa34c87bf461254689ad, type: 2}
-  actualCount: 1
 --- !u!1001 &208772744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -694,7 +698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 934098f5f3fd35e4794b7aa64ffbdee5, type: 2}
-  actualCount: 1
 --- !u!65 &258615612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2371,7 +2374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 3b78bd40a16684a408e3b5a5fd5016fd, type: 2}
-  actualCount: 1
 --- !u!4 &938824726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 14ddfc4474db20a42af70e9505b5ae97,
@@ -3108,7 +3110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 269589b48b5749947bea5f6d6e611e37, type: 2}
-  actualCount: 1
 --- !u!4 &1075367550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: cfedc8a2643d0614f88809e990fdb43f,
@@ -4271,7 +4272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 7ba66177996f83e4d94e9e31b5e45d86, type: 2}
-  actualCount: 1
 --- !u!1001 &1523887387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4570,7 +4570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 934098f5f3fd35e4794b7aa64ffbdee5, type: 2}
-  actualCount: 1
 --- !u!4 &1625989367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f26a4bff81e026540b885aee430640ae,
@@ -4608,6 +4607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terminal: {fileID: 1472849316}
   timeBetweenOrders: 1
+  maxItemsInOrder: 4
   canvas: {fileID: 1213438396}
   orderPrefab: {fileID: 7159721188400925173, guid: 7649feb523cad2249a2a0015ec4735e6,
     type: 3}

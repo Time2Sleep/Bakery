@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DefaultNamespace
-{
+
     public class Item
     {
         public string itemName { get; }
@@ -39,4 +38,3 @@ namespace DefaultNamespace
             gameItemReferences.Add(gameItem);
         }
     }
-}

@@ -10,6 +10,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private Terminal terminal;
         [SerializeField] private long timeBetweenOrders;
+        [SerializeField] private int maxItemsInOrder = 1;
 
         //debug
         [SerializeField] private Transform canvas;
@@ -36,10 +37,14 @@ namespace DefaultNamespace
         {
             List<OrderItem> orderItems = new List<OrderItem>();
             Random random = new Random();
-            int itemId = random.Next(possibleItems.Length);
-            ItemInfo itemInfo = possibleItems[itemId];
-            OrderItem orderItem = new OrderItem(itemInfo.itemName, 1);
-            orderItems.Add(orderItem);
+            for (int i = 0; i < random.Next(1, maxItemsInOrder+1); i++)
+            {
+                int itemId = random.Next(possibleItems.Length);
+                ItemInfo itemInfo = possibleItems[itemId];
+                OrderItem orderItem = new OrderItem(itemInfo.itemName, 1);
+                orderItems.Add(orderItem);
+                Debug.Log("Added " + orderItem.itemName + " to order");
+            }
             Order order = new Order(orderItems);
             return order;
         }
