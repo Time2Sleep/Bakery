@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using UnityEditor;
 using UnityEngine;
 
 public class MouseController : MonoBehaviour
@@ -43,7 +44,7 @@ public class MouseController : MonoBehaviour
     void ClickOnObject(GameObject clickedObject)
     {
         if (clickedObject.tag.Equals("Interactable"))
-        { 
+        {
         }
 
         switch (clickedObject.tag)
@@ -58,8 +59,8 @@ public class MouseController : MonoBehaviour
                 pickAndDrop.pickUpObject(clickedObject);
                 break;
             case "Technics":
-                clickedObject.GetComponent<Technics>().playAnimation();
+                clickedObject.GetComponent<Technics>().interact(pickAndDrop.getPickedObject());
                 break;
         }
-     }
+    }
 }

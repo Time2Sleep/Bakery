@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator charMeshAnimator;
     private Rigidbody _body;
     private Vector3 _inputs = Vector3.zero;
-    
+
     void Start()
     {
         _body = GetComponent<Rigidbody>();
@@ -28,12 +28,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Kek");
             charMeshAnimator.enabled = false;
         }
-            
-
-       
     }
 
 

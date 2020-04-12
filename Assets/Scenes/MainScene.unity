@@ -928,7 +928,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 145324806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfce1c2a64334bcd83456f5abfce64b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5338c92c19084948bf1c1d37fb75e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 08c610459a920bf4c9705e7e8da909b2, type: 2}
@@ -1677,6 +1677,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.6492027, z: 0.9068308}
   m_Center: {x: -0.000000011106634, y: 0.30836934, z: -0.046584606}
+--- !u!95 &530994433
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530994430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 272bbe173adacd7489451f17903a747b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &530994434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530994430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ca793826cd423485138cf767924602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &561548626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2659,7 +2690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1075849853}
-  delay: 0.2
 --- !u!1001 &972660129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2726,6 +2756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Oven
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: cef11656beeff824095a182562f32598,
+        type: 3}
+      propertyPath: m_TagString
+      value: Technics
       objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: cef11656beeff824095a182562f32598,
         type: 3}

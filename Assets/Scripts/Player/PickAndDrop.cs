@@ -33,4 +33,9 @@ public class PickAndDrop : MonoBehaviour
     {
         return pickedObject != null;
     }
+
+    public GameItem getPickedObject()
+    {
+        return pickedObject.GetComponent<GameItem>();
+    }
 }

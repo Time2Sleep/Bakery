@@ -6,7 +6,6 @@ public class GameItem : MonoBehaviour
     private bool isMouseOver = false;
     public ItemInfo itemInfo;
 
-
     void OnMouseOver()
     {
         if (!isMouseOver)
