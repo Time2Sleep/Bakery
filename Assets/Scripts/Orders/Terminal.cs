@@ -7,25 +7,33 @@ using UnityEngine.Networking.PlayerConnection;
 
 public class Terminal : MonoBehaviour
 {
-    public SortedSet<Customer> customersList { get; }
+    public List<Customer> customersList { get; }
 
     public Dictionary<String, Item> actualItems { get; }
 
-    //debug
-    public int itemsOnCounter => actualItems.Count;
 
     public Terminal()
     {
         //создаем список отсортированный по времени отведенному заказу
-        customersList = new SortedSet<Customer>(Comparer<Customer>.Create(
-            (x, y) => x.secondsLeft.CompareTo(y.secondsLeft))
-        );
+        customersList = new List<Customer>();
         actualItems = new Dictionary<string, Item>();
     }
 
     public void addItems(List<Item> items)
     {
-        items.ForEach(item => { actualItems.Add(item.itemName, item); });
+        items.ForEach(item =>
+        {
+            actualItems.TryGetValue(item.itemName, out var presentItem);
+            if (presentItem != null)
+            {
+                presentItem.count += item.count;
+                presentItem.addItemReference(item.gameItemReferences[0]);
+            }
+            else
+            {
+                actualItems.Add(item.itemName, item);
+            }
+        });
         checkForCompletedOrders();
     }
 
@@ -55,7 +63,7 @@ public class Terminal : MonoBehaviour
 
             if (itemsLeft == 0)
             {
-                actualItems[item.itemName] = null;
+                actualItems.Remove(item.itemName);
             }
 
             placedItem.count -= item.count;
@@ -82,19 +90,28 @@ public class Terminal : MonoBehaviour
             var itemDiffs = tryCompleteOrder(customer.order);
             if (itemDiffs != null)
             {
-                itemDiffs.ForEach(diff =>
+                foreach (OrderItemDiff itemDiff in itemDiffs)
                 {
-                    if (diff.isTerminal)
+                    if (itemDiff.isTerminal)
                     {
-                        actualItems[diff.itemName].destory(diff.count);
-                        actualItems.Remove(diff.itemName);
+                        Debug.LogFormat("removing item. Name {0}, count {1}", itemDiff.itemName, itemDiff.count);
+                        actualItems.TryGetValue(itemDiff.itemName, out var itemToDelete);
+                        if (itemToDelete == null)
+                        {
+                            Debug.Log("wtf");
+                            return;
+                        }
+
+                        itemToDelete.destory(itemDiff.count);
+                        actualItems.Remove(itemDiff.itemName);
                     }
                     else
                     {
-                        var item = actualItems[diff.itemName];
-                        item.count -= diff.count;
+                        var item = actualItems[itemDiff.itemName];
+                        item.count -= itemDiff.count;
                     }
-                });
+                }
+
                 Debug.Log("customer found");
                 servedCustomers.Add(customer);
             }

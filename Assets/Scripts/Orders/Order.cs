@@ -7,6 +7,7 @@ namespace DefaultNamespace
 {
     public class Order
     {
+        //todo SET
         public List<OrderItem> items { get; }
 
         public Order(List<OrderItem> items)
@@ -20,8 +21,8 @@ namespace DefaultNamespace
             string text = "Order: ";
             foreach (OrderItem item in items)
             {
-                Debug.Log(item.itemName);
-                text += item.itemName.ToString().ToUpper() + " ";
+                var count = item.desiredCount > 1 ? item.desiredCount.ToString() : "";
+                text += item.itemName.ToUpper() + count + " ";
             }
 
             return text;

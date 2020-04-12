@@ -13,7 +13,6 @@ namespace DefaultNamespace
         {
             if (item == null || orderItem == null)
             {
-                Debug.Log("order diff failed");
                 isValid = false;
             }
             else
