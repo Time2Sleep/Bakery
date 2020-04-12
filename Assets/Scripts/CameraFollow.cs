@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -5,6 +6,7 @@ using UnityEngine;
     {
         private Vector3 offset;
         [SerializeField] private Transform target;
+        [SerializeField] private float delay = 0.2f;
         
         private void Start()
         {
@@ -13,6 +15,12 @@ using UnityEngine;
 
         private void Update()
         {
-            transform.position = target.position + offset;
+            StartCoroutine(Move(target.position));
+        }
+
+        IEnumerator Move(Vector3 pos)
+        {
+            yield return new WaitForSeconds(delay);
+            transform.position = pos + offset;
         }
     }

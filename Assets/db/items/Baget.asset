@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3d3ff7925e94e2f87c4a2abec40f090, type: 3}
-  m_Name: MetalBox
+  m_Name: Baget
   m_EditorClassIdentifier: 
-  itemName: MetalBox
-  itemPrefab: {fileID: -927199367670048503, guid: 485e278e13cb53e40a4a2ccd2be63047,
+  itemName: Baget
+  itemPrefab: {fileID: -927199367670048503, guid: 38720bc5e27737f4d9e8b9fe72357e7b,
     type: 3}
