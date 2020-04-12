@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class MouseController : MonoBehaviour
@@ -25,18 +26,9 @@ public class MouseController : MonoBehaviour
             if (interactionDistance > distance)
             {
                 cursor.transform.position = rayHit.point + new Vector3(0f, 0.1f, 0f);
-                if (rayHit.collider.tag.Equals("Interactable"))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        cursor.SetActive(true);
-                        if (pickAndDrop.isObjectPickedUp())
-                        {
-                            pickAndDrop.dropObject(rayHit.point);
-                        }
-
-                        pickAndDrop.pickUpObject(rayHit.collider.gameObject);
-                    }
+                    ClickOnObject(rayHit.collider.gameObject);
                 }
             }
         }
@@ -47,4 +39,27 @@ public class MouseController : MonoBehaviour
             cursor.SetActive(false);
         }
     }
+
+    void ClickOnObject(GameObject clickedObject)
+    {
+        if (clickedObject.tag.Equals("Interactable"))
+        { 
+        }
+
+        switch (clickedObject.tag)
+        {
+            case "Interactable":
+                cursor.SetActive(true);
+                if (pickAndDrop.isObjectPickedUp())
+                {
+                    pickAndDrop.dropObject(clickedObject.transform.position);
+                }
+
+                pickAndDrop.pickUpObject(clickedObject);
+                break;
+            case "Technics":
+                clickedObject.GetComponent<Technics>().playAnimation();
+                break;
+        }
+     }
 }
