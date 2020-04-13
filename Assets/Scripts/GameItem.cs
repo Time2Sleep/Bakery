@@ -4,21 +4,36 @@ using UnityEngine;
 public class GameItem : MonoBehaviour
 {
     private bool isMouseOver = false;
+    private Renderer rend;
     public ItemInfo itemInfo;
+    private Color baseColor;
 
-    void OnMouseOver()
+    private void Start()
+    {
+        rend = GetComponent<Renderer>();
+        baseColor = rend.material.GetColor("_OutlineColor");
+    }
+
+    public void HighlightObject()
     {
         if (!isMouseOver)
         {
             isMouseOver = true;
-            transform.localScale *= 1.1f;
+            foreach (Material rendMaterial in rend.materials)
+            {
+                rendMaterial.SetColor("_OutlineColor", Color.green);
+            }
+             
         }
     }
 
     void OnMouseExit()
     {
         isMouseOver = false;
-        transform.localScale /= 1.1f;
+        foreach (Material rendMaterial in rend.materials)
+        {
+            rendMaterial.SetColor("_OutlineColor", baseColor); 
+        }
     }
 
     public void selfDestroy()

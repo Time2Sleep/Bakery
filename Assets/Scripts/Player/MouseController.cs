@@ -27,6 +27,10 @@ public class MouseController : MonoBehaviour
             if (interactionDistance > distance)
             {
                 cursor.transform.position = rayHit.point + new Vector3(0f, 0.1f, 0f);
+                if (rayHit.collider.tag.Equals("Interactable"))
+                {
+                    rayHit.collider.GetComponent<GameItem>().HighlightObject();
+                }
                 if (Input.GetMouseButtonDown(0))
                 {
                     ClickOnObject(rayHit.collider.gameObject);

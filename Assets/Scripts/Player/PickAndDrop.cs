@@ -22,7 +22,7 @@ public class PickAndDrop : MonoBehaviour
         if (isObjectPickedUp())
         {
             pickedObject.transform.SetParent(null);
-            pickedObject.transform.position = newPos + Vector3.up / 4f;
+            pickedObject.transform.position = newPos;
             pickedObject.GetComponent<Collider>().enabled = true;
             pickedObject.GetComponent<Rigidbody>().isKinematic = false;
             pickedObject = null;
