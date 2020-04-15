@@ -24,9 +24,8 @@ public class Technics : MonoBehaviour
         }
     }
 
-    public virtual void interact(GameItem pickedObject)
+    public virtual void interact()
     {
-        if(pickedObject==null)
         playAnimation();
     }
 }

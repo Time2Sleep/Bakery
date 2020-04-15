@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Oven : Technics
 {
-    public override void interact(GameItem pickedObject)
+    public override void interact()
     {
-        if (pickedObject is ICookable cookable)
+        /*if (pickedObject is ICookable cookable)
         {
             cookable.cook();
             _animation.Play("CloseC");
-        }
+        }*/
     }
 }

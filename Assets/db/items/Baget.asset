@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Baget
   m_EditorClassIdentifier: 
   itemName: Baget
-  itemPrefab: {fileID: -927199367670048503, guid: 38720bc5e27737f4d9e8b9fe72357e7b,
+  itemPrefab: {fileID: -927199367670048503, guid: 44d9168cdef273b4fb1ea2ad8b6ffb19,
     type: 3}

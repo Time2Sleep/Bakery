@@ -47,10 +47,7 @@ public class MouseController : MonoBehaviour
 
     void ClickOnObject(GameObject clickedObject)
     {
-        if (clickedObject.tag.Equals("Interactable"))
-        {
-        }
-
+        
         switch (clickedObject.tag)
         {
             case "Interactable":
@@ -63,7 +60,7 @@ public class MouseController : MonoBehaviour
                 pickAndDrop.pickUpObject(clickedObject);
                 break;
             case "Technics":
-                clickedObject.GetComponent<Technics>().interact(pickAndDrop.getPickedObject());
+                clickedObject.GetComponent<Technics>().interact();
                 break;
         }
     }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: croissant
   m_EditorClassIdentifier: 
   itemName: "\u0421roissant"
-  itemPrefab: {fileID: -927199367670048503, guid: 12f41a1b45e2afa449f0e99d9ebddd7e,
+  itemPrefab: {fileID: -927199367670048503, guid: 8c25438607e1d1948809b1e219d815cd,
     type: 3}

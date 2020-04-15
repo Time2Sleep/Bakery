@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Frozen_croissant
   m_EditorClassIdentifier: 
   itemName: "Frozen \u0421roissant"
-  itemPrefab: {fileID: 5443662067024024659, guid: f5e6d74f3598d2b438701d53636ce02e,
+  itemPrefab: {fileID: -927199367670048503, guid: 8c25438607e1d1948809b1e219d815cd,
     type: 3}

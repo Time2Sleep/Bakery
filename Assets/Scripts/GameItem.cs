@@ -11,7 +11,7 @@ public class GameItem : MonoBehaviour
     private void Start()
     {
         rend = GetComponent<Renderer>();
-        baseColor = rend.material.GetColor("_OutlineColor");
+        baseColor = rend.material.GetColor("_Color");
     }
 
     public void HighlightObject()
@@ -21,7 +21,7 @@ public class GameItem : MonoBehaviour
             isMouseOver = true;
             foreach (Material rendMaterial in rend.materials)
             {
-                rendMaterial.SetColor("_OutlineColor", Color.green);
+                rendMaterial.SetColor("_Color", Color.green);
             }
              
         }
@@ -32,7 +32,7 @@ public class GameItem : MonoBehaviour
         isMouseOver = false;
         foreach (Material rendMaterial in rend.materials)
         {
-            rendMaterial.SetColor("_OutlineColor", baseColor); 
+            rendMaterial.SetColor("_Color", baseColor); 
         }
     }
 
