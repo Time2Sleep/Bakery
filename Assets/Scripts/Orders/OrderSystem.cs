@@ -53,15 +53,12 @@ namespace DefaultNamespace
                 int index = orderItems.IndexOf(orderItem);
                 if (index != -1)
                 {
-                    Debug.LogFormat("Multiorder {0} ", orderItem.itemName);
                     orderItems[index].desiredCount += 1;
                 }
                 else
                 {
                     orderItems.Add(orderItem);
                 }
-
-                Debug.Log("Added " + orderItem.itemName + " to order");
             }
 
             Order order = new Order(orderItems);

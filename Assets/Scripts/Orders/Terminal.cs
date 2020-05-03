@@ -94,11 +94,9 @@ public class Terminal : MonoBehaviour
                 {
                     if (itemDiff.isTerminal)
                     {
-                        Debug.LogFormat("removing item. Name {0}, count {1}", itemDiff.itemName, itemDiff.count);
                         actualItems.TryGetValue(itemDiff.itemName, out var itemToDelete);
                         if (itemToDelete == null)
                         {
-                            Debug.Log("wtf");
                             return;
                         }
 
@@ -112,14 +110,12 @@ public class Terminal : MonoBehaviour
                     }
                 }
 
-                Debug.Log("customer found");
                 servedCustomers.Add(customer);
             }
         }
 
         servedCustomers.ForEach(customer =>
         {
-            Debug.Log("order completed");
             customersList.Remove(customer);
             customer.completeOrder();
         });
@@ -135,15 +131,12 @@ public class Terminal : MonoBehaviour
         List<OrderItemDiff> checkedItems = new List<OrderItemDiff>();
         foreach (OrderItem orderItem in order.items)
         {
-            Debug.Log("Checking for " + orderItem.itemName);
             var itemDiff = findItemByOrderItem(orderItem);
             if (!itemDiff.isValid)
             {
-                Debug.Log("Item diff failed" + orderItem.itemName + " " + itemDiff.count);
                 return null;
             }
 
-            Debug.Log("order item found");
             checkedItems.Add(itemDiff);
         }
 
