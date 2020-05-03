@@ -33,7 +33,8 @@ namespace DefaultNamespace
                     GameObject ui = Instantiate(orderPrefab, Vector3.zero, Quaternion.identity);
                     ui.transform.SetParent(canvas.transform, false);
                     Order order = generateRandomOrder();
-                    ui.GetComponentInChildren<Text>().text = order.getOrderText();
+                    //ui.GetComponentInChildren<Text>().text = order.getOrderText();
+                    order.setIcons(ui.transform.GetChild(1));
                     Customer customer = ui.AddComponent<Customer>();
                     customer.order = order;
                     customer.setTimer(10);
@@ -50,7 +51,7 @@ namespace DefaultNamespace
             {
                 int itemId = random.Next(possibleItems.Length);
                 ItemInfo itemInfo = possibleItems[itemId];
-                OrderItem orderItem = new OrderItem(itemInfo.itemName, 1);
+                OrderItem orderItem = new OrderItem(itemInfo, 1);
                 int index = orderItems.IndexOf(orderItem);
                 if (index != -1)
                 {

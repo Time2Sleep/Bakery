@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Rye bread
   itemPrefab: {fileID: -927199367670048503, guid: 4acb218f6991b3e41a3fb71b7e745aa9,
     type: 3}
+  sprite: {fileID: 21300000, guid: eca4e522cec037c4e9cee5c2e8bd2422, type: 3}

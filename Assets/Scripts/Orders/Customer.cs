@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -12,7 +13,8 @@ namespace DefaultNamespace
 
         public void completeOrder()
         {
-            Destroy(gameObject);
+            GetComponent<Image>().color = Color.green;
+            StartCoroutine("selfDestroy");
         }
 
         private void FixedUpdate()
@@ -28,6 +30,12 @@ namespace DefaultNamespace
         {
             seconds = time;
             secondsLeft = time;
+        }
+
+        IEnumerator selfDestroy()
+        {
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
         }
     }
 }

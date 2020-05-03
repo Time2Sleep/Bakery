@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Baget
   itemPrefab: {fileID: -927199367670048503, guid: 44d9168cdef273b4fb1ea2ad8b6ffb19,
     type: 3}
+  sprite: {fileID: 21300000, guid: c0ec5d1961369324fb6cf5d4e154a36c, type: 3}

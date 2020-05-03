@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 
-    public class Item
+public class Item
     {
         public string itemName { get; }
         public int count { get; set; }

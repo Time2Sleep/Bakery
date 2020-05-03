@@ -1,15 +1,18 @@
 ﻿using System;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class OrderItem
     {
         public string itemName { get; set; }
+        public Sprite sprite{ get; }
         public int desiredCount { get; set; }
 
-        public OrderItem(string itemName, int desiredCount)
+        public OrderItem(ItemInfo itemInfo, int desiredCount)
         {
-            this.itemName = itemName;
+            this.itemName = itemInfo.itemName;
+            this.sprite = itemInfo.sprite;
             this.desiredCount = desiredCount;
         }
         

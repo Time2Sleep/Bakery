@@ -27,5 +27,18 @@ namespace DefaultNamespace
 
             return text;
         }
+
+        public void setIcons(Transform parent)
+        {
+            Debug.Log(Resources.Load("prefabs/iconPrefab"));
+            foreach (OrderItem item in items)
+            {
+                string text = item.desiredCount > 1 ? "x"+item.desiredCount : "";
+                GameObject icon = GameObject.Instantiate(Resources.Load("prefabs/iconPrefab") as GameObject);
+                icon.GetComponentInChildren<Text>().text = text;
+                icon.GetComponent<Image>().sprite = item.sprite;
+                icon.transform.SetParent(parent);
+            }
+        }
     }
 }
