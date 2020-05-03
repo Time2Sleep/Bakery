@@ -5,7 +5,7 @@ public class Technics : MonoBehaviour
     protected Animator _animation;
     protected bool isOpen = false;
 
-    private void Start()
+    public virtual void Start()
     {
         _animation = GetComponent<Animator>();
     }

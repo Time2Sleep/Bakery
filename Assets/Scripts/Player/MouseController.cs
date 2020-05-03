@@ -31,6 +31,7 @@ public class MouseController : MonoBehaviour
                 {
                     rayHit.collider.GetComponent<GameItem>().HighlightObject();
                 }
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     ClickOnObject(rayHit.collider.gameObject);
@@ -47,7 +48,6 @@ public class MouseController : MonoBehaviour
 
     void ClickOnObject(GameObject clickedObject)
     {
-        
         switch (clickedObject.tag)
         {
             case "Interactable":
@@ -60,7 +60,7 @@ public class MouseController : MonoBehaviour
                 pickAndDrop.pickUpObject(clickedObject);
                 break;
             case "Technics":
-                clickedObject.GetComponent<Technics>().interact();
+                clickedObject.GetComponentInParent<Technics>().interact();
                 break;
         }
     }
