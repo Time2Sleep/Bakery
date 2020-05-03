@@ -6,19 +6,19 @@ public class MouseController : MonoBehaviour
 {
     [SerializeField] private GameObject cursor;
     [SerializeField] private float interactionDistance = 3f;
-    private Camera camera;
+    private Camera _camera;
     private PickAndDrop pickAndDrop;
 
     private void Start()
     {
-        camera = Camera.main;
+        _camera = Camera.main;
         cursor.SetActive(false);
         pickAndDrop = GetComponent<PickAndDrop>();
     }
 
     private void Update()
     {
-        Ray rayFromCamera = camera.ScreenPointToRay(Input.mousePosition);
+        Ray rayFromCamera = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
         if (Physics.Raycast(rayFromCamera, out rayHit))
         {

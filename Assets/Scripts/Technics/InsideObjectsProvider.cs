@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using Items;
 using UnityEngine;
 
 public class InsideObjectsProvider : MonoBehaviour
 {
-    public List<GameItem> items { get; set; }
-
-    private void Start()
+    public List<GameItem> items
     {
-        items = new List<GameItem>();
+        //todo remove from getter
+        get { return calculateObjectsInside(); }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private List<GameItem> calculateObjectsInside()
     {
-        if (other != null && other.GetComponent<GameItem>() is GameItem gameItem)
+        List<GameItem> items = new List<GameItem>();
+        var colliders = Physics.OverlapBox(transform.position, transform.lossyScale / 2);
+        foreach (var collider in colliders)
         {
-            items.Add(gameItem);
+            GameItem item = collider.GetComponent<GameItem>();
+            if (item != null)
+            {
+                items.Add(item);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other != null && other.GetComponent<GameItem>() is GameItem gameItem)
-        {
-            items.Remove(gameItem);
-        }
+        return items;
     }
 }
