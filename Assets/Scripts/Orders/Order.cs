@@ -18,11 +18,11 @@ namespace DefaultNamespace
         //debug
         public String getOrderText()
         {
-            string text = "Order: ";
+            string text = "";
             foreach (OrderItem item in items)
             {
-                var count = item.desiredCount > 1 ? item.desiredCount.ToString() : "";
-                text += item.itemName.ToUpper() + count + " ";
+                var count = item.desiredCount > 1 ? " x"+item.desiredCount : "";
+                text += item.itemName.ToUpper() + count + "\n";
             }
 
             return text;

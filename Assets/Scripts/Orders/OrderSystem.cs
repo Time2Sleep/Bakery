@@ -28,14 +28,15 @@ namespace DefaultNamespace
             while (true)
             {
                 yield return new WaitForSeconds(timeBetweenOrders);
-                if (terminal.customersList.Count <= 10)
+                if (terminal.customersList.Count < 10)
                 {
                     GameObject ui = Instantiate(orderPrefab, Vector3.zero, Quaternion.identity);
-                    ui.transform.SetParent(canvas.transform);
+                    ui.transform.SetParent(canvas.transform, false);
                     Order order = generateRandomOrder();
                     ui.GetComponentInChildren<Text>().text = order.getOrderText();
                     Customer customer = ui.AddComponent<Customer>();
                     customer.order = order;
+                    customer.setTimer(10);
                     terminal.addCustomer(customer);
                 }
             }
