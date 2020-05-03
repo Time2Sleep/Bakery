@@ -20,6 +20,7 @@ public class MouseController : MonoBehaviour
     {
         Ray rayFromCamera = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
+        bool canInteract = false;
         if (Physics.Raycast(rayFromCamera, out rayHit))
         {
             float distance = Vector3.Distance(transform.position, rayHit.point);
@@ -32,17 +33,21 @@ public class MouseController : MonoBehaviour
                     rayHit.collider.GetComponent<GameItem>().HighlightObject();
                 }
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    ClickOnObject(rayHit.collider.gameObject);
-                }
+                canInteract = true;
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) && canInteract)
         {
-            pickAndDrop.dropObject(cursor.transform.position);
-            cursor.SetActive(false);
+            if (pickAndDrop.isObjectPickedUp())
+            {
+                pickAndDrop.dropObject(cursor.transform.position);
+                cursor.SetActive(false);
+            }
+            else
+            {
+                ClickOnObject(rayHit.collider.gameObject);
+            }
         }
     }
 
@@ -52,11 +57,6 @@ public class MouseController : MonoBehaviour
         {
             case "Interactable":
                 cursor.SetActive(true);
-                if (pickAndDrop.isObjectPickedUp())
-                {
-                    pickAndDrop.dropObject(clickedObject.transform.position);
-                }
-
                 pickAndDrop.pickUpObject(clickedObject);
                 break;
             case "Technics":
