@@ -60,7 +60,7 @@ public class MouseController : MonoBehaviour
                 pickAndDrop.pickUpObject(clickedObject);
                 break;
             case "Technics":
-                clickedObject.GetComponentInParent<Technics>().interact();
+                clickedObject.GetComponentInParent<Technics>().interact(pickAndDrop.getPickedObject());
                 break;
         }
     }

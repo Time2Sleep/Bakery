@@ -23,7 +23,6 @@ public class GameItem : MonoBehaviour
             {
                 rendMaterial.SetColor("_Color", Color.green);
             }
-             
         }
     }
 

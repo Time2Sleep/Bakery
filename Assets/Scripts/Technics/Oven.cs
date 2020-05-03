@@ -5,12 +5,26 @@ using UnityEngine;
 
 public class Oven : Technics
 {
-    public override void interact()
+    private InsideObjectsProvider _insideObjectsProvider;
+
+    public override void Start()
     {
-        /*if (pickedObject is ICookable cookable)
+        base.Start();
+        _insideObjectsProvider = GetComponentInChildren<InsideObjectsProvider>();
+    }
+
+    public override void interact(GameItem pickedObject)
+    {
+        base.interact(pickedObject);
+        _insideObjectsProvider.items.RemoveAll(item =>
         {
-            cookable.cook();
-            _animation.Play("CloseC");
-        }*/
+            if (item is ICookable cookable)
+            {
+                cookable.cook();
+                return true;
+            }
+
+            return false;
+        });
     }
 }
