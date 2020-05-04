@@ -22,4 +22,17 @@ public class MarketMenu : UiMenu
             text.text = soldItem.itemName + " " + soldItem.price + "$";
         }
     }
+
+    public override void focus()
+    {
+        base.focus();
+        enableCharacterControls = false;
+        //имхо хуита
+        Invoke("returnCharControls", 0.5f);
+    }
+
+    private void returnCharControls()
+    {
+        enableCharacterControls = true;
+    }
 }

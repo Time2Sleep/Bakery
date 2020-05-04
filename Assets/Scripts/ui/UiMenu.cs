@@ -7,15 +7,18 @@ public class UiMenu : MonoBehaviour
     public GameObject[] canvasObjects;
     public bool enableCharacterControls;
     public bool enableMouseControls;
+    public Action<bool> menuState;
 
-    public void focus()
+    public virtual void focus()
     {
         updateState(true);
+        menuState?.Invoke(true);
     }
 
     public void disable()
     {
         updateState(false);
+        menuState?.Invoke(false);
     }
 
     private void updateState(bool state)

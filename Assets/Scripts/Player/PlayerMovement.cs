@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_mainUiFrame.characterControlsEnabled())
         {
+            charMeshAnimator.enabled = false;
             return;
         }
 
