@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rye bread
   m_EditorClassIdentifier: 
   itemName: Rye bread
-  itemPrefab: {fileID: -927199367670048503, guid: 4acb218f6991b3e41a3fb71b7e745aa9,
+  itemPrefab: {fileID: 6828414301917440098, guid: aaad4cd902d5872418b47ce229d406ca,
     type: 3}
   sprite: {fileID: 21300000, guid: eca4e522cec037c4e9cee5c2e8bd2422, type: 3}
-  price: 30
+  price: 500

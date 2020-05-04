@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coffee
   m_EditorClassIdentifier: 
   itemName: Coffee
-  itemPrefab: {fileID: -927199367670048503, guid: 3b6d3970e6fc53249b52135bccc51c2a,
+  itemPrefab: {fileID: 4631619734656263313, guid: 3c8b68444c93b65449003a74b0471222,
     type: 3}
   sprite: {fileID: 21300000, guid: 8c9fa675794933148bdbae4d8d9e95a6, type: 3}
-  price: 70
+  price: 150

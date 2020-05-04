@@ -1,12 +1,25 @@
+using System;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
 public class PickAndDrop : MonoBehaviour
 {
+    public static PickAndDrop instance;
     private GameObject pickedObject;
     [SerializeField] private Transform pickedObjectPos;
 
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void pickUpObject(GameObject objectToPickUp)
     {

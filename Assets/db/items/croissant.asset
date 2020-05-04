@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: croissant
   m_EditorClassIdentifier: 
   itemName: "\u0421roissant"
-  itemPrefab: {fileID: -927199367670048503, guid: 8c25438607e1d1948809b1e219d815cd,
+  itemPrefab: {fileID: 7062452408373361118, guid: 9fc9112b0e7267945966a0139a069656,
     type: 3}
   sprite: {fileID: 21300000, guid: 5c38d46452289d44182432ce27e2bbf3, type: 3}
-  price: 50
+  price: 300

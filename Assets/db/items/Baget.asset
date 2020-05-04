@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Baget
   m_EditorClassIdentifier: 
   itemName: Baget
-  itemPrefab: {fileID: -927199367670048503, guid: 44d9168cdef273b4fb1ea2ad8b6ffb19,
+  itemPrefab: {fileID: 7147926042376279755, guid: bcffa7aa1baa50242bf9cf58781467d4,
     type: 3}
   sprite: {fileID: 21300000, guid: c0ec5d1961369324fb6cf5d4e154a36c, type: 3}
-  price: 35
+  price: 100

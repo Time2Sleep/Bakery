@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Dough
   m_EditorClassIdentifier: 
   itemName: Dough
-  itemPrefab: {fileID: -927199367670048503, guid: 5f0f491524547d544937eeb46bf58d8f,
+  itemPrefab: {fileID: 3248104490217955738, guid: 59bca38226cde604792c28fd0b7f8907,
     type: 3}
+  sprite: {fileID: 21300000, guid: 856362ead86570f44b7ac745f1c6da22, type: 3}
+  price: 400

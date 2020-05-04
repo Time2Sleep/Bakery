@@ -14,7 +14,7 @@ namespace DefaultNamespace
         [SerializeField] private int maxItemsInOrder = 1;
 
         //debug
-        [SerializeField] private Transform canvas;
+        [SerializeField] private Transform orderPanel;
         [SerializeField] private GameObject orderPrefab;
         [SerializeField] private ItemInfo[] possibleItems;
 
@@ -31,7 +31,7 @@ namespace DefaultNamespace
                 if (terminal.customersList.Count < 10)
                 {
                     GameObject ui = Instantiate(orderPrefab, Vector3.zero, Quaternion.identity);
-                    ui.transform.SetParent(canvas.transform, false);
+                    ui.transform.SetParent(orderPanel.transform, false);
                     Order order = generateRandomOrder();
                     //ui.GetComponentInChildren<Text>().text = order.getOrderText();
                     order.setIcons(ui.transform.GetChild(1));
