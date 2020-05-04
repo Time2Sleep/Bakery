@@ -18,6 +18,11 @@ public class MouseController : MonoBehaviour
 
     private void Update()
     {
+        if (!MainUiFrame.instance.mouseControlsEnabled())
+        {
+            return;
+        }
+
         Ray rayFromCamera = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
         bool canInteract = false;
