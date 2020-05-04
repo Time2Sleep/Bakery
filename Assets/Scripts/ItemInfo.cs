@@ -8,4 +8,5 @@ using Object = System.Object;
         public String itemName;
         public GameObject itemPrefab;
         public Sprite sprite;
+        public int price;
     }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Networking.PlayerConnection;
+using UnityEngine.UI;
 
 
 public class Terminal : MonoBehaviour
 {
     public List<Customer> customersList { get; }
-
+    private int money = 0;
+    [SerializeField]private Text moneyText;
     public Dictionary<String, Item> actualItems { get; }
 
 
@@ -72,7 +74,7 @@ public class Terminal : MonoBehaviour
 
     public OrderItemDiff findItemByOrderItem(OrderItem orderItem)
     {
-        actualItems.TryGetValue(orderItem.itemName, out var item);
+        actualItems.TryGetValue(orderItem.itemInfo.itemName, out var item);
         return new OrderItemDiff(item, orderItem);
     }
 
@@ -87,7 +89,7 @@ public class Terminal : MonoBehaviour
         List<Customer> servedCustomers = new List<Customer>();
         foreach (Customer customer in customersList)
         {
-            var itemDiffs = tryCompleteOrder(customer.order);
+            var itemDiffs = tryCompleteOrder(customer.Order);
             if (itemDiffs != null)
             {
                 foreach (OrderItemDiff itemDiff in itemDiffs)
@@ -100,6 +102,8 @@ public class Terminal : MonoBehaviour
                             return;
                         }
 
+                        money += itemToDelete.price;
+                        moneyText.text = money.ToString();
                         itemToDelete.destory(itemDiff.count);
                         actualItems.Remove(itemDiff.itemName);
                     }

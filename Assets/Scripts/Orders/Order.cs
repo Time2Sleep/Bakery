@@ -22,7 +22,7 @@ namespace DefaultNamespace
             foreach (OrderItem item in items)
             {
                 var count = item.desiredCount > 1 ? " x"+item.desiredCount : "";
-                text += item.itemName.ToUpper() + count + "\n";
+                text += item.itemInfo.itemName.ToUpper() + count + "\n";
             }
 
             return text;
@@ -36,7 +36,7 @@ namespace DefaultNamespace
                 string text = item.desiredCount > 1 ? "x"+item.desiredCount : "";
                 GameObject icon = GameObject.Instantiate(Resources.Load("prefabs/iconPrefab") as GameObject);
                 icon.GetComponentInChildren<Text>().text = text;
-                icon.GetComponent<Image>().sprite = item.sprite;
+                icon.GetComponent<Image>().sprite = item.itemInfo.sprite;
                 icon.transform.SetParent(parent);
             }
         }

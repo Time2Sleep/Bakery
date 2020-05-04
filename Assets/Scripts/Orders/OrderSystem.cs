@@ -36,7 +36,7 @@ namespace DefaultNamespace
                     //ui.GetComponentInChildren<Text>().text = order.getOrderText();
                     order.setIcons(ui.transform.GetChild(1));
                     Customer customer = ui.AddComponent<Customer>();
-                    customer.order = order;
+                    customer.Order = order;
                     customer.setTimer(10);
                     terminal.addCustomer(customer);
                 }

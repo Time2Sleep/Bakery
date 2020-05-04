@@ -9,7 +9,20 @@ namespace DefaultNamespace
         private int secondToWaitForOrder;
         private float secondsLeft;
         private float seconds;
-        public Order order { get; set; }
+        private Order order;
+        
+        public Order Order
+        {
+            get { return order;}
+            set
+            {
+                order = value;
+                foreach (var ord in order.items)
+                {
+                    GetComponent<RectTransform>().sizeDelta += new Vector2(75f, 0f);
+                }
+            }
+        }
 
         public void completeOrder()
         {

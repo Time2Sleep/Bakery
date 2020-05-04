@@ -7,11 +7,13 @@ public class Item
     {
         public string itemName { get; }
         public int count { get; set; }
+        public int price{ get; }
         public List<GameItem> gameItemReferences { get; set; }
 
         public Item(GameItem gameItem)
         {
             this.itemName = gameItem.itemInfo.itemName;
+            this.price = gameItem.itemInfo.price;
             count = 1;
             gameItemReferences = new List<GameItem>();
             gameItemReferences.Add(gameItem);

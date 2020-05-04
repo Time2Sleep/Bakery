@@ -5,22 +5,22 @@ namespace DefaultNamespace
 {
     public class OrderItem
     {
-        public string itemName { get; set; }
-        public Sprite sprite{ get; }
+       public ItemInfo itemInfo;
         public int desiredCount { get; set; }
 
         public OrderItem(ItemInfo itemInfo, int desiredCount)
         {
-            this.itemName = itemInfo.itemName;
-            this.sprite = itemInfo.sprite;
+            this.itemInfo = itemInfo;
             this.desiredCount = desiredCount;
         }
         
         
         protected bool Equals(OrderItem other)
         {
-            return itemName == other.itemName && desiredCount == other.desiredCount;
+            return itemInfo.itemName.Equals(other.itemInfo.itemName);// && desiredCount == other.desiredCount;
         }
+        
+        
 
         public override bool Equals(object obj)
         {
@@ -34,7 +34,7 @@ namespace DefaultNamespace
         {
             unchecked
             {
-                return ((itemName != null ? itemName.GetHashCode() : 0) * 397) ^ desiredCount;
+                return ((itemInfo.itemName != null ? itemInfo.itemName.GetHashCode() : 0) * 397) ^ desiredCount;
             }
         }
     }

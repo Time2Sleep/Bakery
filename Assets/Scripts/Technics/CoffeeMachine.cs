@@ -7,11 +7,17 @@ public class CoffeeMachine : Technics
     private bool isCooking;
     [SerializeField]private Transform pointToPlaceCoffee;
     [SerializeField] private float cookingTime = 5f;
-   
+    private InsideObjectsProvider _insideObjectsProvider;
+    
+    public override void Start()
+    {
+        base.Start();
+        _insideObjectsProvider = GetComponentInChildren<InsideObjectsProvider>();
+    }
 
     public override void interact(GameItem pickedObject)
     {
-        if (isCooking)
+        if (isCooking || _insideObjectsProvider.items.Count>0)
         {
             return;
         }
