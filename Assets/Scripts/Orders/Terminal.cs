@@ -125,7 +125,16 @@ public class Terminal : MonoBehaviour
         });
     }
 
-
+    public void removeOrder(Customer customer) //Когда время заказа выходит, это типо штраф
+    {
+        customersList.Remove(customer);
+        foreach (OrderItem item in customer.Order.items)
+        {
+            Debug.Log(item.itemInfo.itemName + " - " + item.itemInfo.price);
+            money -= item.itemInfo.price;
+            moneyText.text = money.ToString();
+        }
+    }
     /**
      * Возвращаем список данные по заказу, который может быть выполнен.
      * Если на выполенение заказа не хвататет элементов возвращаем временно null 

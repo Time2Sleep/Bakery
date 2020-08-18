@@ -4,10 +4,13 @@ public class Technics : MonoBehaviour
 {
     protected Animator _animation;
     protected bool isOpen = false;
+    private Outline outline;
 
     public virtual void Start()
     {
         _animation = GetComponent<Animator>();
+        outline = GetComponentInChildren<Outline>();
+        outline.enabled = false;
     }
 
     public void playAnimation()
@@ -27,5 +30,15 @@ public class Technics : MonoBehaviour
     public virtual void interact(GameItem pickedObject)
     {
         playAnimation();
+    }
+
+    private void OnMouseOver()
+    {
+        outline.enabled = true;
+    }
+
+    private void OnMouseExit()
+    {
+        outline.enabled = false;
     }
 }

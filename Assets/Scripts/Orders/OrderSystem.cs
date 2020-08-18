@@ -37,7 +37,7 @@ namespace DefaultNamespace
                     order.setIcons(ui.transform.GetChild(1));
                     Customer customer = ui.AddComponent<Customer>();
                     customer.Order = order;
-                    customer.setTimer(10);
+                    customer.setTimer(UnityEngine.Random.Range(5,30));
                     terminal.addCustomer(customer);
                 }
             }

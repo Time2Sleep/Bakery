@@ -10,7 +10,10 @@ namespace DefaultNamespace
         private float secondsLeft;
         private float seconds;
         private Order order;
+        private bool checkSeconds = true;
+
         
+
         public Order Order
         {
             get { return order;}
@@ -27,15 +30,25 @@ namespace DefaultNamespace
         public void completeOrder()
         {
             GetComponent<Image>().color = Color.green;
-            StartCoroutine("selfDestroy");
+            StartCoroutine(nameof(selfDestroy), 2f);
         }
 
         private void FixedUpdate()
         {
-            if (secondsLeft > 0)
+            if (checkSeconds)
             {
-                secondsLeft -= 0.02f;
-                GetComponentInChildren<Slider>().value = secondsLeft/seconds;
+                if (secondsLeft > 0)
+                {
+                    secondsLeft -= 0.02f;
+                    GetComponentInChildren<Slider>().value = secondsLeft / seconds;
+                }
+                else //Костыльный способ убрать заказ, если вышло время
+                {
+                    checkSeconds = false;
+                    GetComponent<Image>().color = Color.red;
+                    StartCoroutine(nameof(selfDestroy), 2f);
+                    FindObjectOfType<Terminal>().removeOrder(this);
+                }
             }
         }
 
@@ -45,9 +58,9 @@ namespace DefaultNamespace
             secondsLeft = time;
         }
 
-        IEnumerator selfDestroy()
+        IEnumerator selfDestroy(float seconds)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
         }
     }
